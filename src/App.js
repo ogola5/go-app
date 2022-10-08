@@ -3,9 +3,9 @@ import './App.css';
 
 import HomePage from './components/HomePage'
 import ProductsContainer from './ProductsContainer'
-import ProductPage from './components/ProductPage'
+import ItemPage from './components/ItemPage'
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route,Routes } from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -16,10 +16,13 @@ class App extends React.Component {
         <h1>Ecommerce Shopping Cart Application</h1>
         <br />
         <BrowserRouter>
+          <Routes>
+          <Route exact path="/" element={HomePage} />
+          <Route exact path="/products" element={ProductsContainer} />
+          <Route exact path="/product/:id" render={props => ( <ItemPage { ...props } id={this.state} />  )} />
+          </Routes>
         
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/products" component={ProductsContainer} />
-        <Route exact path="/product/:id" render={props => ( <ProductPage { ...props } id={this.state} />  )} />
+        
         
         </BrowserRouter>
       </div>
