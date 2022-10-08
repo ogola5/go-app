@@ -17,8 +17,8 @@ class App extends React.Component {
         <br />
         <BrowserRouter>
           <Routes>
-          <Route exact path="/" element={HomePage} />
-          <Route exact path="/products" element={ProductsContainer} />
+          <Route exact path="/" element={<HomePage/>}/>
+          <Route exact path="/products" element={<ProductsContainer/>} />
           <Route exact path="/product/:id" render={props => ( <ItemPage { ...props } id={this.state} />  )} />
           </Routes>
         
