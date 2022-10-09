@@ -1,23 +1,23 @@
 import React from 'react';
-import Item from './components/Item'
+import Products from './components/Item'
 import Filter from './components/Filter'
 import {Link} from 'react-router-dom'
 
-class ItemContainer extends React.Component {
+class ProductsContainer extends React.Component {
 
   state = {
     products: [],
-    filteredItems: [],
+    filteredProducts: [],
     sort: "",
     size: ""
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:8000/products")
+    fetch("https://fakestoreapi.com/products")
     .then(res => res.json())
     .then(data => this.setState({
       products: data,
-      filteredItems: data
+      filteredProducts: data
     }))
   }
 
@@ -27,7 +27,7 @@ class ItemContainer extends React.Component {
     this.listProducts()
   }
 
-  listItems = () => {
+  listProducts = () => {
     (console.log("listProducts", this.state.sort))
     this.setState(state => {
       console.log("setState", state)
@@ -39,17 +39,17 @@ class ItemContainer extends React.Component {
         state.products.sort((a,b) => (a.id > b.id ? 1 : -1))
       }
       if (state.size !== ""){
-        return{ filteredItems: state.products.filter(a => 
+        return{ filteredProducts: state.products.filter(a => 
           a.availableSizes.indexOf(state.size.toUpperCase())>=0
           )}
       }
-      return {filteredItems: state.products}
+      return {filteredProducts: state.products}
     })
   }
 
   handleChangeSize = (e) => {
     this.setState({size: e.target.value})
-    this.listItems()
+    this.listProducts()
   }
 
   render() {
@@ -58,9 +58,9 @@ class ItemContainer extends React.Component {
         <div className="row">
             <div className="col-md-9">
             <Link to="/">Return Home</Link>
-              <Filter size={this.state.size} sort={this.state.sort} handleChangeSize={this.handleChangeSize} handleChangeSort={this.handleChangeSort} count={this.state.filteredItems.length} />
+              <Filter size={this.state.size} sort={this.state.sort} handleChangeSize={this.handleChangeSize} handleChangeSort={this.handleChangeSort} count={this.state.filteredProducts.length} />
               <hr />
-              <Item products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
+              <Products products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
           </div>
           <div className="col-md-4">
 

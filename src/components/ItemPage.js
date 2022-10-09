@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export default class ProductPage extends React.Component {
+export default class ItemPage extends React.Component {
 
-    state = {
+    useState = {
         product: []
     }
 
@@ -13,23 +13,23 @@ export default class ProductPage extends React.Component {
         .then(data => {
             console.log(data)
             this.setState({
-                product: data
+                item: data
             })
         })
     }
 
     render() {
-        console.log(this.state, this.state.product.title)
+        console.log(this.state, this.state.item.title)
         const { title, description, id, price, sku } = this.state.product
         return(
             <div className="container">
                 <div className="back-to-products">
-                    <Link to="/products">Back to Products</Link>
+                    <Link to="/products">Back to Items</Link>
                 </div>
                 <h1>{title}</h1>
                 <div className="details">
                     <div className="details-image">
-                        <img src={`/products/${sku}_2.jpg`} alt={title}></img>
+                        <img src={`/items/${sku}_2.jpg`} alt={title}></img>
                     </div>
                     <div className="details-info">
                         <ul>
