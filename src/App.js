@@ -9,11 +9,13 @@ import { BrowserRouter, Route,Routes } from 'react-router-dom';
 
 class App extends React.Component {
 
+  
+
 
   render() {
     return (
       <div className="container">
-        <h1>Ecommerce Shopping Cart Application</h1>
+        <h1>Your Shopping Made Easier</h1>
         <br />
         <BrowserRouter>
           <Routes>

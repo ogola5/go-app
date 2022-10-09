@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export default class ItemPage extends React.Component {
 
-    state = {
+    useState = {
         product: []
     }
 
@@ -24,7 +24,7 @@ export default class ItemPage extends React.Component {
         return(
             <div className="container">
                 <div className="back-to-products">
-                    <Link to="/products">Back to Products</Link>
+                    <Link to="/products">Back to Items</Link>
                 </div>
                 <h1>{title}</h1>
                 <div className="details">
